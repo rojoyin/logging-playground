@@ -1,0 +1,26 @@
+              ________
+              |Logger|
+    +-------------+----------+
+    |             |          |
+handler1      handler2   handlerN
+    |             |          |
+formatter1   formatter2  formatterN
+
+
+Create a Logger: logging.getLogger()
+This will return a new instance of the logger we want to customize
+
+handler: logging.StreamHandler() | logging.FileHandler("file.log") | logging.OtherHandler
+Creates a specific function to handle logs, we set the min level of logs to be handled
+
+formatter: logging.Formatter("[STRING-WITH-THE-FORMAT]")
+The template to create the LogRecord instances that will be logged by the handler
+
+An instance of a type Logger could have multiple handlers, each handler has one formatter
+
+The order of creation is, bottom to top from the initial diagram:
+- Create the formatter, according to the information you want to log
+- Create the handler, setting the min level of events you want to log
+- Attach a formatter to a specific handler
+- Attach the handler to the specific logger instance
+- Use the Logger instance
