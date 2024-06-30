@@ -24,3 +24,13 @@ The order of creation is, bottom to top from the initial diagram:
 - Attach a formatter to a specific handler
 - Attach the handler to the specific logger instance
 - Use the Logger instance
+
+
+Everything is a child of the root logger. If you configure the root logger, it will be
+inherited by all the loggers.
+
+To get the root logger:
+root_logger = logging.getLogger(None) # root_logger = logging.getLogger() works too
+Any configuration you change is this logger, will be propagated to new instances by
+default, as the propagate attribute of the Logger instance is True, it will keep
+propagating the messages through it hierarchy untila hanlder is found.
