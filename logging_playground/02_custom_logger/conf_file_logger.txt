@@ -1,0 +1,17 @@
+What happens when the logger and the handler have different min log levels defined for each one?
+
+The log level defined in the handler level is more prevalent than the one defined in the logger level
+
+If you don't define the root logger behaviour, it will raise an error
+
+
+```
+Traceback (most recent call last):
+  File ".../__main__.py", line 3, in <module>
+    logging.config.fileConfig(
+  File ".../3.10.2/lib/python3.10/logging/config.py", line 81, in fileConfig
+    _install_loggers(cp, handlers, disable_existing_loggers)
+  File ".../3.10.2/lib/python3.10/logging/config.py", line 192, in _install_loggers
+    llist.remove("root")
+ValueError: list.remove(x): x not in list
+```
